@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" SYSTEM xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:replace="main-pages/header :: header "></div>
+  <script src="https://github.com/babakhani/pwt.datepicker"></script>
+  <link th:rel="stylesheet" type="text/css" media="all"  th:href="@{/css/jalalidatepicker.min.css}">
+  <link th:rel="stylesheet" type="text/css" media="all"  th:href="@{/css/checkbox.css}">
+
+  <script th:src="@{/js/jalalidatepicker.min.js}"></script>
+
+</head>
+<body>
+
+<div th:replace="main-pages/header :: nav"></div>
+<div class="limiter">
+  <div class="container-login100">
+<div class="container" >
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center" >
+              <img th:src="${'/images/profile/'+person.photos}"  alt="Admin" class="rounded-circle" width="150">
+              <div class="mt-3">
+                <h4 th:text="${person.name_family}"></h4>
+                <p class="text-secondary mb-1" ></p>
+                <p class="text-muted font-size-sm" th:text="${person.aboutMe}"></p>
+                <p class="text-muted font-size-sm" th:text="${'ادرس: '+person.address}"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <h6 class="mb-0"><img src="https://img.icons8.com/emoji/48/undefined/e-mail.png"/></h6>
+              <span class="text-secondary" th:text="${person.email}"></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <h6 class="mb-0"><img src="https://img.icons8.com/ios-filled/50/undefined/ringer-volume.png"/></h6>
+              <span class="text-secondary" th:text="${person.telephone}"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+          <div class="row gutters-sm" style="margin-right: 0px;margin-left: 0px;">
+              <div class="card h-100" style="width: 100%">
+                <div class="card-body" style="width: 100%">
+                  <form>
+                    <div>
+                  <div style="display: none">
+                    <input id="personId" type="text" th:value="${person.id}">
+                    <input id="personClient" type="text" th:if="${session.client != null && session.client.doctor}" th:value="${session.client.id}">
+
+                  </div>
+                    <div class="wrap-input100" style="display: flex; width: 100%;" data-validate = "Password is required">
+                      <input class="input100" type="text" id = "datepicker" style="width: 35%" data-jdp placeholder="لطفا یک تاریخ وارد نمایید"/>
+                      <span class="focus-input100"></span>
+                      <p style="margin-left: 10%; font-size: 15px; padding-top: 1.5%">لطفا پس انتخاب در هر روز  دکمه ثبت را بزنید و سپس به تاریخ دیگر بروید</p>
+                    </div>
+                    <table class="table table-dark" style="padding: unset;    border-radius: 15px;">
+                      <thead>
+                      <tr>
+                        <th scope="col" style="width: 10%">ساعت</th>
+                        <th scope="col" style="width: 10%"> 8-9 </th>
+                        <th scope="col" style="width: 10%"> 9-10</th>
+                        <th scope="col" style="width: 10%">10-11</th>
+                        <th scope="col" style="width: 10%">11-12</th>
+                        <th scope="col" style="width: 10%">13-14</th>
+                        <th scope="col" style="width: 10%">14-15</th>
+                        <th scope="col" style="width: 10%">16-17</th>
+                        <th scope="col" style="width: 10%">18-19</th>
+                        <th scope="col" style="width: 10%">20-21</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>
+                          <div class="wrap-input100" style="width: 100%;" data-validate = "" >
+                            وقت اول
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-1" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-2" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-3" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-4" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-5" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-6" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-7" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-8" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "1-9" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            وقت دوم
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-1" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-2" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-3" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-4" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-5" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-6" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-7" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-8" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="wrap-input100" data-validate = "" >
+                            <input class="input100" type="checkbox" required id = "2-9" name="repass">
+                            <span class="focus-input100"></span>
+                          </div>
+                        </td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                    <a class="login100-form-btn" style="width: 20%;height: 26px;float: right" id="sub">
+                      ثبت
+                                          </a>
+                      <a class="login100-form-btn" style="width: 20%;height: 26px; float: left" id="selectAll">
+                        انتخاب همه
+                      </a>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+      </div>
+
+  </div>
+</div>
+  </div>
+</div>
+<div th:replace="main-pages/footer :: footer"></div>
+
+</body>
+
+
+<script type="text/javascript">
+var selectAll = true;
+  $(document).ready(function() {
+    $('#selectAll').click(function() {
+      if (selectAll) {
+        $('input[type="checkbox"]').prop('checked', true);
+        $('#selectAll').text('پاک کردن همه');
+        selectAll = false;
+      }else{
+        $('input[type="checkbox"]').prop('checked', false);
+        $('#selectAll').text('انتخاب همه');
+        selectAll = true;
+      }
+    });
+/////////////////////////////////////////////////////////////////////////////////////////////
+    jalaliDatepicker.startWatch({
+      minDate: "attr",
+      maxDate: "attr"
+    });
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    setTimeout(function () {
+      var elm = $('#datepicker');
+      var date = new Date().toLocaleDateString('fa-IR');
+      date = date.replace(/([۰-۹])/g, token => String.fromCharCode(token.charCodeAt(0) - 1728));
+      var date2 = date.split('/');
+      if(date2[1].length === 1){
+        date2[1] = '0'+date2[1];
+      }
+      if(date2[2].length === 1){
+        date2[2] = '0'+date2[2];
+      }
+      elm.val(date2[0]+'/'+date2[1]+'/'+date2[2]);
+
+      jalaliDatepicker.hide();
+      jalaliDatepicker.show(elm);
+
+    },  100
+  );
+  });
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  setTimeout( function(){
+    person = {
+      'personId': $('#personId').val(),
+      "time": $('#datepicker').val()
+    }
+    search(person);
+  }  , 200 );
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $('#datepicker').on("change", function () {
+      var person1 = {
+        'personId': $('#personId').val(),
+        "time": $('#datepicker').val()
+      }
+     search(person1);
+
+    });
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $('#sub').click(function() {
+      var personClient =$("#personClient").val();
+      if ( personClient == undefined) {
+        alert("لطفا اول لاگین کنید");
+        return false;
+      }
+      var person ={
+        "personId": $('#personId').val(),
+        "time": $('#datepicker').val(),
+        "c11": $('#1-1').is(':checked') ? "true" : "false",
+        "c12": $('#1-2').is(':checked') ? "true" : "false",
+        "c13": $('#1-3').is(':checked') ? "true" : "false",
+        "c14": $('#1-4').is(':checked') ? "true" : "false",
+        "c15": $('#1-5').is(':checked') ? "true" : "false",
+        "c16": $('#1-6').is(':checked') ? "true" : "false",
+        "c17": $('#1-7').is(':checked') ? "true" : "false",
+        "c18": $('#1-8').is(':checked') ? "true" : "false",
+        "c19": $('#1-9').is(':checked') ? "true" : "false",
+        "c21": $('#2-1').is(':checked') ? "true" : "false",
+        "c22": $('#2-2').is(':checked') ? "true" : "false",
+        "c23": $('#2-3').is(':checked') ? "true" : "false",
+        "c24": $('#2-4').is(':checked') ? "true" : "false",
+        "c25": $('#2-5').is(':checked') ? "true" : "false",
+        "c26": $('#2-6').is(':checked') ? "true" : "false",
+        "c27": $('#2-7').is(':checked') ? "true" : "false",
+        "c28": $('#2-8').is(':checked') ? "true" : "false",
+        "c29": $('#2-9').is(':checked') ? "true" : "false"
+      };
+      $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/profile",
+        data: JSON.stringify(person),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            console.log(data);
+
+          if(data !== null){
+            alert("تغییرات با موفقیت انجام شد");
+          }
+          else{
+            alert("خطا در ثبت تغییرات");
+          }
+      }});
+    });
+   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var search = function(person) {
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "/api/timeReserv",
+      data: JSON.stringify(person),
+      dataType: 'json',
+      cache: false,
+      timeout: 600000,
+      success: function (data) {
+        $('#1-1').prop('checked', (data.c11 !== "false"));
+        $('#1-2').prop('checked', (data.c12 !== "false"));
+        $('#1-3').prop('checked', (data.c13 !== "false"));
+        $('#1-4').prop('checked', (data.c14 !== "false"));
+        $('#1-5').prop('checked', (data.c15 !== "false"));
+        $('#1-6').prop('checked', (data.c16 !== "false"));
+        $('#1-7').prop('checked', (data.c17 !== "false"));
+        $('#1-8').prop('checked', (data.c18 !== "false"));
+        $('#1-9').prop('checked', (data.c19 !== "false"));
+        $('#2-1').prop('checked', (data.c21 !== "false"));
+        $('#2-2').prop('checked', (data.c22 !== "false"));
+        $('#2-3').prop('checked', (data.c23 !== "false"));
+        $('#2-4').prop('checked', (data.c24 !== "false"));
+        $('#2-5').prop('checked', (data.c25 !== "false"));
+        $('#2-6').prop('checked', (data.c26 !== "false"));
+        $('#2-7').prop('checked', (data.c27 !== "false"));
+        $('#2-8').prop('checked', (data.c28 !== "false"));
+        $('#2-9').prop('checked', (data.c29 !== "false"));
+      }
+    });
+  }
+
+</script>
+</html>

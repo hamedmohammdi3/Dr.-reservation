@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@majidh1/jalalidatepicker": "^0.6.0",
+    "persian-datepicker": "^1.2.0"
+  }
+}

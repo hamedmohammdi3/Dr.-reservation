@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" SYSTEM xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+
+    <div th:replace="/main-pages/header :: header"></div>
+
+
+</head>
+<body>
+<div th:replace="/main-pages/header :: nav"></div>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form id="form" class="login100-form validate-form" th:action="@{/setClient}" method="post">
+					<span class="login100-form-title">
+                      درخواست عضویت
+					</span>
+                <div style="display: flex">
+                    <div class="dev-signup-right" STYLE="width: 50%">
+                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="name_family" placeholder="نام و نام خانوادگی">
+                            <span class="focus-input100"></span>
+
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="شماره تلفن مجاز نیست">
+                            <input class="input100" type="tel" name="telephone" required placeholder="شماره تلفن:">
+                            <span class="focus-input100"></span>
+                        </div>
+                    </div>
+                    <div class="dev-signup-left" style="width: 50%;">
+                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="email" placeholder="ایمیل">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" type="password" id="password" name="password"
+                                   placeholder="رمز عبور">
+                            <span class="focus-input100"></span>
+
+                        </div>
+                        <div class="wrap-input100 validate-input" data-validate="">
+                            <input class="input100" type="password" required id="repass" name="repass"
+                                   placeholder="تکرار رمز عبور">
+                            <span class="focus-input100"></span>
+                            <span id='message'></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" style="width: 30%">
+                        ثبت و ارسال اطلاعات
+                    </button>
+                </div>
+
+                <div class="text-center p-t-13">
+                    <a class="txt2" th:href="@{/login}">
+                        حساب کاربری دارم
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+            <br/>
+            <div th:class="${success_class}" th:if="${success_created != null}" th:text="${success_created}"></div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+<div th:replace="/main-pages/footer :: footer"></div>
+<!-- Jquery JS-->
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!-- Vendor JS-->
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+
+<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    });
+
+    $('#form').submit(function () {
+
+        if ($('#password').val() == $('#repass').val()) {
+            $('#message').html('یکی است').css('color', 'green');
+        }
+    });
+</script>
+</body>
+</html>

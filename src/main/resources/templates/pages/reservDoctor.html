@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags-->
+    <div th:replace="/main-pages/header :: header"></div>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.ico}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/search.css}">
+
+
+</head>
+<body style="text-align: right">
+<div th:replace="/main-pages/header :: nav"></div>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+
+<div class="limiter">
+    <div class="container-login100" style="min-height: 0;">
+        <div class="wrap-login111" style="background-color: #eeeeee; width: 90%; padding: 20px 8px 20px 20px;">
+            <div class="container" style="width: 100%">
+                <h3 style="font-size: 3rem; padding: 0 0 10px 0;">:نتایج رزرو شده </h3>
+                <div th:if="${success_created != null}" th:class="${success_class}" th:text="${success_created}"></div>
+                <section id="cart" th:each="ReservTimeClient : ${ReservTimeClients}" style="margin-top: 70px;">
+
+                    <article class="product">
+                        <div class="content" style="height: 90px;width: 100%;">
+                            <p th:text="${ReservTimeClient.dateSet+' :در تاریخ' }"></p>
+                            <div style="display: flex;direction: rtl;">
+                                <p th:text="${ReservTimeClient.time }"></p>
+                                <button class="login100-form-btn" style="width: 20%;height: 26px; margin-right: 50%;">
+                                    <a th:href="@{/removeReservDoctor(id = ${ReservTimeClient.id})}"
+                                       style="color: #eeeeee; width: 100%;">حذف رزرو</a>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="/main-pages/footer :: footer"></div>
+<!-- Jquery JS-->
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<!-- Vendor JS-->
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+
+<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/vendor/tilt/tilt.jquery.min.js}"></script>
+<script th:src="@{/vendor/select2/select2.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/search.js}"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    });
+
+    $('#password, #repass').on('keyup', function () {
+        if ($('#password').val() == $('#repass').val()) {
+            $('#message').html('یکی است').css('color', 'green');
+        } else
+            $('#message').html('پسورد یکی نیست').css('color', 'red');
+    });
+
+</script>
+</body>
+</html>
